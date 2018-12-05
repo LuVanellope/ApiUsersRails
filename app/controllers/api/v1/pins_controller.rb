@@ -1,6 +1,6 @@
 class Api::V1::PinsController < ApplicationController
 
-  before_action authenticate_user! 
+  before_action :authenticate_user! 
 
   def index
     render json: Pin.all.order('created_at DESC')
