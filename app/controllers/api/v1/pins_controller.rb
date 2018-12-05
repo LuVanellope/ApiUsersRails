@@ -1,6 +1,6 @@
 class Api::V1::PinsController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate
 
   def index
     render json: Pin.all.order('created_at DESC')
@@ -14,6 +14,9 @@ class Api::V1::PinsController < ApplicationController
       render json: { errors: pin.errors }, status: 422
     end
   end
+
+
+
 
   private
     def pin_params
